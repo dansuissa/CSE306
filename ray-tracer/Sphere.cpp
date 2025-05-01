@@ -16,7 +16,7 @@ bool Sphere::intersect(const Ray& r, Hit& h) const{
                            : (t2 >1e-5 ? t2 : 1e30));
     if (t>= 1e30) return false;
     h.t=t;
-    h.P = r.O+r.u*t;
+    h.P= r.O+r.u*t;
     h.N = (h.P - C);
     h.N.normalize();
     if (invertNormal)
