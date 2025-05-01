@@ -3,9 +3,9 @@
 namespace rt{
 class Sphere : public Geometry{
 public:
-    Vec3  C;               
+    Vec3 C;               
     double R;              
-    bool   invertNormal;   
+    bool invertNormal;   
     Sphere(const Vec3& centre, double radius,
            const Vec3& alb,
            bool mirror= false,
@@ -17,7 +17,7 @@ public:
     {
         albedo= alb;
         isMirror= mirror;
-        isTransparent=transparent;
+        isTransparent =transparent;
     }
     bool intersect(const Ray& r, Hit& h) const override;
 };
