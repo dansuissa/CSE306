@@ -1,0 +1,6 @@
+build/
+*.obj
+*.png
+*.exe
+*.o
+*.vcxproj*
