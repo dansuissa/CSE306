@@ -49,7 +49,7 @@ int TriangleMesh::buildNode(int start,int end)
     if(end-start <= leafMax) return idx;
 
     Vec3 diag= node.bbox.bmax-node.bbox.bmin;
-    int axis  = diag.x>diag.y ? (diag.x>diag.z?0:2)
+    int axis = diag.x>diag.y ? (diag.x>diag.z?0:2)
                               : (diag.y>diag.z?1:2);
     double mid=
         axis==0 ? (node.bbox.bmin.x + node.bbox.bmax.x)*0.5 :
