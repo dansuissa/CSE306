@@ -11,10 +11,8 @@ inline void save_svg(const std::vector<Polygon>& polys,
 {
     FILE* f = std::fopen(filename.c_str(), "w");
     if (!f) return;
-
     std::fprintf(f,
       "<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000'>\n");
-
     for (const auto& poly : polys) {
         if (poly.v.empty()) continue;
         std::fprintf(f,"<polygon points='");
@@ -29,14 +27,12 @@ inline void save_svg(const std::vector<Polygon>& polys,
                 "<circle cx='%f' cy='%f' r='2' fill='red'/>\n",
                 p.x*1000.0, 1000.0 - p.y*1000.0);
     }
-
     if (black_points) {
         for (const auto& p : *black_points)
             std::fprintf(f,
                 "<circle cx='%f' cy='%f' r='2' fill='black'/>\n",
                 p.x*1000.0, 1000.0 - p.y*1000.0);
     }
-
     std::fprintf(f,"</svg>\n");
     std::fclose(f);
 }
