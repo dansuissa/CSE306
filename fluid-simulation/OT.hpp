@@ -18,15 +18,15 @@ public:
     void saveSVG(const char* file);  
 
 private:
-    const Polygon             clipPoly;
-    std::vector<Vec2>         p;             
-    std::vector<double>       lambda;         
-    int                       maxIter;
-    std::vector<double>       w;              
-    PowerDiagram              PD = PowerDiagram(p,{});
+    const Polygon clipPoly;
+    std::vector<Vec2> p;             
+    std::vector<double> lambda;         
+    int maxIter;
+    std::vector<double> w;              
+    PowerDiagram PD = PowerDiagram(p,{});
     static lbfgsfloatval_t _eval (void*,const lbfgsfloatval_t*,
                                   lbfgsfloatval_t*,int,lbfgsfloatval_t);
-    static int            _prog (void*,const lbfgsfloatval_t*,
+    static int _prog (void*,const lbfgsfloatval_t*,
                                   const lbfgsfloatval_t*,
                                   lbfgsfloatval_t,lbfgsfloatval_t,
                                   lbfgsfloatval_t,lbfgsfloatval_t,
