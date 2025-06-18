@@ -4,7 +4,6 @@
 #include <cassert>
 #include <cstddef>
 #include <nanoflann.hpp>
-
 namespace
 {
     inline bool inside(const Vec2& X, const Vec2& Pi, const Vec2& Pj)
@@ -36,10 +35,8 @@ namespace
             size_t prev = (cur + n - 1) % n;
             const Vec2& A = poly.v[prev];
             const Vec2& B = poly.v[cur];
-
             bool Ain = inside(A, Pi, Pj);
             bool Bin = inside(B, Pi, Pj);
-
             if (Ain && Bin)           
             {
                 out.v.push_back(B);
@@ -61,17 +58,13 @@ namespace
 void Voronoi::compute()
 {
     cells.assign(P.size(), {});
-
     PointCloudAdapter pc_adapter(P);
     using my_kd_tree_t = nanoflann::KDTreeSingleIndexAdaptor<
         nanoflann::L2_Simple_Adaptor<double, PointCloudAdapter>,
         PointCloudAdapter, 2 /* dim */>;
-    
     my_kd_tree_t index(2, pc_adapter, {10 /* max leaf */});
-
     Polygon big_box;
     big_box.v = { {-1,-1}, {2,-1}, {2,2}, {-1,2} };
-
 #pragma omp parallel for schedule(dynamic,1)
     for (ptrdiff_t i = 0; i < (ptrdiff_t)P.size(); ++i)
     {
@@ -82,9 +75,7 @@ void Voronoi::compute()
                 cells[i] = big_box;
                 break;
             }
-
             Polygon cell = big_box;
-            
             std::vector<size_t> ret_index(num_neighbors_to_find);
             std::vector<double> out_dist_sqr(num_neighbors_to_find);
             nanoflann::KNNResultSet<double> resultSet(num_neighbors_to_find);
