@@ -7,13 +7,11 @@ struct Vec2
     double x{}, y{};
     Vec2() = default;
     Vec2(double X, double Y) : x(X), y(Y) {}
-
     Vec2  operator+(const Vec2& b) const { return {x + b.x, y + b.y}; }
     Vec2  operator-(const Vec2& b) const { return {x - b.x, y - b.y}; }
     Vec2  operator*(double s) const { return {x * s, y * s};}
     Vec2  operator/(double s) const { return {x / s, y / s};}
     Vec2& operator+=(const Vec2& b) { x+=b.x; y+=b.y; return *this; }
-
     double norm2() const { return x*x + y*y; }
     double norm() const { return std::sqrt(norm2()); }
 };
