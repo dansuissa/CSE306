@@ -5,7 +5,6 @@
 struct Polygon
 {
 	std::vector<Vec2> v;     
-
 	Vec2 centroid() const {
 		double cx = 0.0, cy = 0.0, area = 0.0;
 		const size_t n = v.size();
